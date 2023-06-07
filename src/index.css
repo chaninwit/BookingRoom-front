@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "Lato", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-family: "Roboto Slab", serif;
+  font-family: "Sarabun", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Urbanist", sans-serif;
+  background-color: rgba(130, 130, 130, 0.881);
+  color: black;
+}
