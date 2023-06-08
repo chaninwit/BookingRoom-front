@@ -1,20 +1,22 @@
 export default function ButtonModal({ title, children }) {
   return (
     <>
-      {/* Open the modal using ID.showModal() method */}
-      <button className="btn" onClick={() => window.my_modal_1.showModal()}>
+      {/* The button to open modal */}
+      <label htmlFor="my_modal_7" className="btn">
         {title}
-      </button>
-      <dialog id="my_modal_1" className="modal">
-        <form method="dialog" className="modal-box">
-          <h3 className="font-bold text-lg">{title}!</h3>
-          <p className="py-4">{children}</p>
-          <div className="modal-action">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn">Close</button>
-          </div>
-        </form>
-      </dialog>
+      </label>
+
+      {/* Put this part before </body> tag */}
+      <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
+          <h3 className="text-lg font-bold">{title}</h3>
+          {children}
+        </div>
+        <label className="modal-backdrop" htmlFor="my_modal_7">
+          ปิด
+        </label>
+      </div>
     </>
   );
 }
