@@ -1,7 +1,5 @@
 import BOOKING from "../assets/BOOKING.png";
 import room1 from "../assets/room1.jpg";
-import LoginForm from "../features/auth/components/LoginForm";
-import RegisterForm from "../features/auth/components/RegisterForm";
 
 export default function HomeloginPage() {
   return (
@@ -23,12 +21,8 @@ export default function HomeloginPage() {
             </div>
           </div>
           <div>
-            <div className="flex gap-1">
-              <LoginForm />
-            </div>
-            <div className="flex gap-1">
-              <RegisterForm />
-            </div>
+            <div className="flex gap-1"></div>
+            <div className="flex gap-1"></div>
           </div>
         </div>
       </div>
