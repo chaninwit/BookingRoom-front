@@ -8,13 +8,13 @@ export default function RegisterInput({
   id,
   onChange,
   value,
-  isIvalid,
+  isInvalid,
 }) {
   const defaultClassName =
     "bg-gray-50 border  text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5 ";
   const className = createClasses(
     defaultClassName,
-    isIvalid
+    isInvalid
       ? "border-red-500 focus:ring-red-300"
       : "border-gray-300 focus:ring-blue-300 focus:border-blue-500"
   );

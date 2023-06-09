@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const loginSchema = Joi.object({
-  Email: Joi.string().messages({
+  email: Joi.string().messages({
     "string.empty": "อีเมลไม่ถูกต้อง",
   }),
   password: Joi.string().required().messages({
