@@ -14,9 +14,7 @@ export default function ButtonModal({ title, children }) {
           <h3 className="text-lg font-bold">{title}</h3>
           {children}
         </div>
-        <label className="modal-backdrop" htmlFor="my_modal_7">
-          ปิด
-        </label>
+        <label className="modal-backdrop" htmlFor="my_modal_7"></label>
       </div>
     </>
   );

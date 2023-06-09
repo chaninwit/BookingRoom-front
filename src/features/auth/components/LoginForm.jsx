@@ -3,6 +3,9 @@ import Modal from "../../../components/Modal";
 import validateLogin from "../validators/validate-login";
 import InputErrorMessage from "./InputErrorMessage";
 import useForm from "../../../hooks/useForm";
+import { useDispatch } from "react-redux";
+import { login } from "../slice/auth-slice";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const { input, handleChangeInput, error, handleSubmitForm } = useForm(
@@ -12,12 +15,22 @@ export default function LoginForm() {
     },
     validateLogin
   );
+
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(login(data)).unwrap();
+    } catch (err) {
+      toast.error("อีเมลหรือรหัสไม่ถูกต้อง");
+    }
+  };
   return (
     <Modal title="เข้าสู่ระบบ">
       <form
         className="space-y-4 md:space-y-6"
         action="#"
-        onSubmit={handleSubmitForm((login) => {})}
+        onSubmit={handleSubmitForm(onSubmit)}
       >
         <LoginInput
           placeholder="อีเมลของคุณ"

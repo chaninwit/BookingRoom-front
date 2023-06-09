@@ -14,7 +14,7 @@ export default function Modal({ title, children }) {
           <div>{children}</div>
           <div className="modal-action">
             <label htmlFor="my_modal_6" className="btn">
-              Close!
+              ปิด
             </label>
           </div>
         </div>
