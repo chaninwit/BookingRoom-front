@@ -1,4 +1,5 @@
 export default function ButtonModal({ title, children }) {
+  // const [show, setShow] = useState(false);
   return (
     <>
       {/* The button to open modal */}

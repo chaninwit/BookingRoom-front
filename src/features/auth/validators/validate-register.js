@@ -4,11 +4,14 @@ const registerSchema = Joi.object({
   Fullname: Joi.string().trim().required().messages({
     "string.empty": "กรุณาใส่ชื่อเต็ม",
   }),
-  Email: Joi.alternatives([Joi.string().email({ tlds: false })]).messages({
+  email: Joi.alternatives([
+    Joi.string().email({ tlds: false }),
+    Joi.string().pattern(/^[a-zA-Z0-9]{6,30}$/),
+  ]).messages({
     "alternatives.match": "อีเมลไม่ถูกต้อง",
   }),
   password: Joi.string()
-    .pattern(/^[a-zA-Z0-9]{4-30}$/)
+    .pattern(/^[a-zA-Z0-9]{6,30}$/)
     .trim()
     .required()
     .messages({

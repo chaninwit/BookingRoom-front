@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import RegisterInput from "./RegisterInput";
 import ButtonModal from "../../../components/ButtonModal";
 import validateRegister from "../validators/validate-register";
 import InputErrorMessage from "./InputErrorMessage";
+import * as authService from "../../../api/auth-api.js";
+import { setAccessToken } from "../../../utils/localstorage";
 
 const initialInput = {
   Fullname: "",
-  Email: "",
+  email: "",
   password: "",
   confirmPassword: "",
 };
@@ -19,11 +22,26 @@ export default function RegisterForm() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    const result = validateRegister(input);
-    if (result) {
-      return setError(result);
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
+      if (result) {
+        return setError(result);
+      }
+      setError({});
+
+      const res = await authService.register(input);
+      setAccessToken(res.data.accessToken);
+
+      if (res.status == 200) {
+        toast.success("สมัครสมาชิกสำเร็จ");
+
+        const modals = document.getElementsByClassName("modal");
+        modals[1].style.display = "none";
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
     }
   };
 
@@ -49,12 +67,12 @@ export default function RegisterForm() {
           placeholder="อีเมลของคุณ"
           titlename="Email"
           type="email"
-          value={input.Email}
+          value={input.email}
           onChange={handleChangeInput}
-          name="Email"
-          isIvalid={error.Email}
+          name="email"
+          isIvalid={error.email}
         />
-        {error.Email && <InputErrorMessage message={error.Email} />}
+        {error.email && <InputErrorMessage message={error.email} />}
         <RegisterInput
           placeholder="••••••••"
           titlename="Password"
