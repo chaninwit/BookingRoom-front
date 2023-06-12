@@ -7,13 +7,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen ">
       <div className=" h-20">
-        <div className="navbar bg-base-100">
-          <div className="flex-1">
-            <div className="w-28 pb-1 pt-1">
-              <img className="w-full" src={BOOKING} />
+        <div className="navbar bg-base-100 justify-between">
+          <div className="grip-2">
+            <div className="">
+              <img className="w-24 h-20" src={BOOKING} />
             </div>
           </div>
-          <div className="flex-1 ">
+          <div className="grip-2 ">
             <div className="form-control">
               <input
                 type="text"
@@ -23,10 +23,10 @@ export default function HomePage() {
             </div>
           </div>
           <div>
-            <div className="flex gap-1">
+            <div className="grip-2 gap-1">
               <LoginForm />
             </div>
-            <div className="flex gap-1">
+            <div className="grip-2 gap-1">
               <RegisterForm />
             </div>
           </div>
@@ -60,6 +60,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
         <div className="flex-1 m-10 item-center">
           <div className="card w-96 bg-base-100 shadow-xl">
             <figure>
