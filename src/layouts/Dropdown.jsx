@@ -29,7 +29,7 @@ export default function Dropdown() {
               <div className="font-semibold">ข้อมูลผู้ใช้ของฉัน</div>
             </div>
           </Link>
-          <Link to="/bookingMe">
+          <Link to="/Mybooking">
             <div className=" item-center gep-4 hover:bg-gray-100 p-2 rounded-lg">
               <div className="font-semibold">การจองของฉัน</div>
             </div>

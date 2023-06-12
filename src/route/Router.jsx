@@ -3,7 +3,11 @@ import HomePage from "../pages/HomePage";
 import RedirectlfAuthenticated from "../features/auth/components/RedirectlfAuthenticated";
 import HomeloginPage from "../pages/HomeloginPage";
 // import ProtectedRoute from "../features/auth/components/ProtectedRoute";
-import Header from "../layouts/Header";
+import MeetingPage from "../pages/MeetingPage";
+import BookingPage from "../pages/BookingPage";
+import MymeetingPage from "../pages/MymeetingPage";
+import ProfilePage from "../pages/ProfilePage";
+import MybookingPage from "../pages/Mybooking";
 const router = createBrowserRouter([
   {
     path: "/Guest",
@@ -25,7 +29,7 @@ const router = createBrowserRouter([
     path: "/Meeting",
     element: (
       // <ProtectedRoute>
-      <Header />
+      <MeetingPage />
       // </ProtectedRoute>
     ),
   },
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
     path: "/Booking",
     element: (
       // <ProtectedRoute>
-      <Header />
+      <BookingPage />
       // </ProtectedRoute>
     ),
   },
@@ -41,7 +45,23 @@ const router = createBrowserRouter([
     path: "/myMeeting",
     element: (
       // <ProtectedRoute>
-      <Header />
+      <MymeetingPage />
+      // </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      // <ProtectedRoute>
+      <ProfilePage />
+      // </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/Mybooking",
+    element: (
+      // <ProtectedRoute>
+      <MybookingPage />
       // </ProtectedRoute>
     ),
   },
