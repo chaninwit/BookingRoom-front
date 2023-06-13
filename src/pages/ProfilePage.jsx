@@ -1,44 +1,52 @@
 import Header from "../layouts/Header";
+import Menuprofile from "../layouts/Menuprofile";
 import { NavLink } from "react-router-dom";
 
 export default function ProfilePage() {
   return (
     <div className="min-h-screen ">
       <Header />
-
-      <div className=" flex h-[calc(100vh-5rem)]">
-        <div className="  mt-10">
-          <div className="drawer lg:drawer-open items-center ">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
-              {/* Page content here */}
-              <label
-                htmlFor="my-drawer-2"
-                className="btn btn-primary drawer-button lg:hidden"
-              >
-                MENU
-              </label>
+      <div className="flex">
+        <Menuprofile />
+        <div>
+          <div className=" flex flex-row ">
+            {/* left */}
+            <div className="flex m-32 flex-col">
+              <h1 className="text-3xl">ข้อมูลของฉัน</h1>
+              <h1 className="mt-10">
+                ชื่อผู้ใช้งาน
+                <button className="bg-white border-solid  rounded-sx px-4 focus:ring-1 ml-5">
+                  0000000000
+                </button>
+              </h1>
+              <h1 className="mt-10">
+                Username
+                <button className="bg-white border-solid  rounded-sx px-4 focus:ring-1 ml-5">
+                  0000000000
+                </button>
+              </h1>
+              <h1 className="mt-10">
+                Email
+                <button className="bg-white border-solid  rounded-sx px-4 focus:ring-1 ml-5">
+                  0000000000
+                </button>
+              </h1>
             </div>
-            <div className="drawer-side">
-              <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-              <ul className="menu p-5 w-80 h-full bg-base-300 text-base-content items-center gap-8 ">
-                {/* Sidebar content here */}
+            {/* rigth */}
+            <div className="flex justify-self-start flex-col">
+              <button className="bg-gray-400 rounded-full w-40 h-40 mx-12 mt-32 text-7xl">
+                +
+              </button>
+              <h1 className="text-center text-3xl mt-10">เพิ่มรูป</h1>
+            </div>
+          </div>
 
-                <li>
-                  <a>
-                    <NavLink className="navlink" to="/profile">
-                      บัญชีของฉัน
-                    </NavLink>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <NavLink className="navlink" to="/Mybooking">
-                      การจองของฉัน
-                    </NavLink>
-                  </a>
-                </li>
-              </ul>
+          <div className=" flex  justify-center gap-20">
+            <NavLink className="navlink" to="/mybooking">
+              <button className="btn bg-blue-500">ตกลง</button>
+            </NavLink>
+            <div className="">
+              <button className="btn bg-red-500">ยกเลิก</button>
             </div>
           </div>
         </div>

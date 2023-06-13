@@ -8,6 +8,7 @@ import BookingPage from "../pages/BookingPage";
 import MymeetingPage from "../pages/MymeetingPage";
 import ProfilePage from "../pages/ProfilePage";
 import MybookingPage from "../pages/Mybooking";
+
 const router = createBrowserRouter([
   {
     path: "/Guest",
