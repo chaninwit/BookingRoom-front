@@ -4,7 +4,7 @@ export default function Card() {
   return (
     <div className=" mt-20 ">
       <div className="flex-1 m-10 item-center">
-        <div className="card  bg-base-100 shadow-xl">
+        <div className=" bg-base-100 shadow-xl">
           <figure>
             <img src={room1} alt="Room" />
           </figure>

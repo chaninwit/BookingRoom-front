@@ -14,7 +14,7 @@ export default function Dropdown() {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownEl}>
+    <div className="relative " ref={dropdownEl}>
       <div role="button" onClick={() => setOpen(!open)}>
         <img
           src="https://picsum.photos/id/237/200/300"
