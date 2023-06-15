@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import RedirectlfAuthenticated from "../features/auth/components/RedirectlfAuthenticated";
 import HomeloginPage from "../pages/HomeloginPage";
-// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import MeetingPage from "../pages/MeetingPage";
 import BookingPage from "../pages/BookingPage";
 import MymeetingPage from "../pages/MymeetingPage";
@@ -21,49 +21,49 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <ProtectedRoute>
-      <HomeloginPage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <HomeloginPage />
+      </ProtectedRoute>
     ),
   },
   {
     path: "/Meeting",
     element: (
-      // <ProtectedRoute>
-      <MeetingPage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <MeetingPage />
+      </ProtectedRoute>
     ),
   },
   {
     path: "/Booking",
     element: (
-      // <ProtectedRoute>
-      <BookingPage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <BookingPage />
+      </ProtectedRoute>
     ),
   },
   {
     path: "/myMeeting",
     element: (
-      // <ProtectedRoute>
-      <MymeetingPage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <MymeetingPage />
+      </ProtectedRoute>
     ),
   },
   {
     path: "/profile",
     element: (
-      // <ProtectedRoute>
-      <ProfilePage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <ProfilePage />
+      </ProtectedRoute>
     ),
   },
   {
     path: "/Mybooking",
     element: (
-      // <ProtectedRoute>
-      <MybookingPage />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <MybookingPage />
+      </ProtectedRoute>
     ),
   },
 ]);

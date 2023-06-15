@@ -81,7 +81,7 @@ export default function RegisterForm() {
         <RegisterInput
           placeholder="••••••••"
           titlename="confirmPassword"
-          type="confirmPassword"
+          type="Password"
           value={input.confirmPassword}
           onChange={handleChangeInput}
           name="confirmPassword"

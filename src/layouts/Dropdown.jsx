@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { setRemoveToken } from "../utils/localstorage";
 
 export default function Dropdown() {
   const [open, setOpen] = useState(false);
@@ -12,6 +13,11 @@ export default function Dropdown() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+  const handleClickLogout = () => {
+    setRemoveToken();
+    // console.log("handleClickLogout");
+  };
 
   return (
     <div className="relative " ref={dropdownEl}>
@@ -36,7 +42,9 @@ export default function Dropdown() {
           </Link>
           <Link to="/Guest">
             <div className=" item-center gep-4 hover:bg-gray-100 p-2 rounded-lg">
-              <div className="font-semibold">ออกจากระบบ</div>
+              <div className="font-semibold" onClick={handleClickLogout}>
+                ออกจากระบบ
+              </div>
             </div>
           </Link>
         </div>
