@@ -11,7 +11,6 @@ export default function MymeetingPage() {
         <Menu />
         <div className="flex ">
           <Card />
-          <Card />
         </div>
         <div className="m-10 w-20">
           <ButtonModal title="  Create Meeting">

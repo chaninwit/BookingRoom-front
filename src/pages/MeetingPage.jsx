@@ -1,6 +1,6 @@
 import Header from "../layouts/Header";
 import Menu from "../layouts/Menu";
-import Card from "../components/Card";
+import CardById from "../components/CardById";
 import { NavLink } from "react-router-dom";
 
 export default function MeetingPage() {
@@ -12,7 +12,7 @@ export default function MeetingPage() {
         <div className=" flex">
           {/* left */}
           <div className="flex-1">
-            <Card />
+            <CardById />
           </div>
           {/* rigth */}
           <div className=" flex-1 flex-col m-10">

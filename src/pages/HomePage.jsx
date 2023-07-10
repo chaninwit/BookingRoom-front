@@ -67,12 +67,6 @@ export default function HomePage() {
         </div>
 
         <div className="flex">
-          {/* {data.map((item, index) => (
-            <div key={index}>
-              
-            </div>
-          ))} */}
-          <Card />
           <Card />
         </div>
       </div>

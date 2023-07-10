@@ -14,9 +14,6 @@ export default function HomeloginPage() {
           <div>
             <Card />
           </div>
-          <div>
-            <Card />
-          </div>
         </div>
       </div>
     </div>
