@@ -4,7 +4,7 @@ import RedirectlfAuthenticated from "../features/auth/components/RedirectlfAuthe
 import HomeloginPage from "../pages/HomeloginPage";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import MeetingPage from "../pages/MeetingPage";
-import BookingPage from "../pages/BookingPage";
+
 import MymeetingPage from "../pages/MymeetingPage";
 import ProfilePage from "../pages/ProfilePage";
 import MybookingPage from "../pages/Mybooking";
@@ -26,19 +26,12 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+
   {
-    path: "/Meeting",
+    path: "/Booking/:id",
     element: (
       <ProtectedRoute>
         <MeetingPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/Booking",
-    element: (
-      <ProtectedRoute>
-        <BookingPage />
       </ProtectedRoute>
     ),
   },

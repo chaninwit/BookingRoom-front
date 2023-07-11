@@ -1,7 +1,7 @@
 import Header from "../layouts/Header";
 import { NavLink } from "react-router-dom";
 import Menuprofile from "../layouts/Menuprofile";
-import Card from "../components/Card";
+import CardById from "../components/CardById";
 
 export default function MybookingPage() {
   return (
@@ -12,7 +12,7 @@ export default function MybookingPage() {
         <div className=" flex">
           {/* left */}
           <div className="flex-1 ">
-            <Card />
+            <CardById />
           </div>
           {/* rigth */}
           <div className=" flex-1 flex-col m-10 mt-20">

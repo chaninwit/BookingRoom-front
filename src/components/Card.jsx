@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Card() {
   const [cardData, setCardData] = useState([]);
@@ -8,8 +9,9 @@ export default function Card() {
     axios
       .get("/auth/findCard")
       .then((response) => {
+        console.log("response", response.data);
         setCardData(response.data);
-        console.log("response.data", response.data);
+        console.log("cardData", cardData);
       })
       .catch((error) => {
         console.error(error);
@@ -18,7 +20,7 @@ export default function Card() {
 
   return (
     <div className=" mt-20 flex">
-      {cardData &&
+      {cardData.length &&
         cardData.map((item) => (
           <div className="flex-1 m-10 item-center" key={item.id}>
             <div className=" bg-base-100 shadow-xl">
@@ -38,7 +40,9 @@ export default function Card() {
                 <p>จบวันที่ {item.meetingData.dateEnd}</p>
 
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">เข้าร่วมเลย</button>
+                  <Link to={`/Booking/${item.meetingData.id}`}>
+                    <button className="btn btn-primary">เข้าร่วมเลย</button>
+                  </Link>
                 </div>
               </div>
             </div>

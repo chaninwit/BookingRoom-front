@@ -10,20 +10,7 @@ export default function MenuItem() {
           </NavLink>
         </a>
       </li>
-      <li>
-        <a>
-          <NavLink className="navlink" to="/Meeting">
-            MEETING
-          </NavLink>
-        </a>
-      </li>
-      <li>
-        <a>
-          <NavLink className="navlink" to="/Booking">
-            BOOKING
-          </NavLink>
-        </a>
-      </li>
+
       <li>
         <a>
           <NavLink className="navlink" to="/Mymeeting">

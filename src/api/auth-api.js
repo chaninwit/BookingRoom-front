@@ -7,6 +7,11 @@ export const getAllChair = (input) => axios.get("/auth/getAllChair", input);
 export const getAllBooking = (input) => axios.get("/auth/getAllBooking", input);
 export const getAllMeeting = (input) => axios.get("/auth/getAllMeeting", input);
 export const findCard = (input) => axios.get("/auth/findCard", input);
+export const findBookingById = (input) =>
+  axios.get("/findBookingById/:id", input);
+export const findAllChairById = (input) =>
+  axios.get("/findAllChairById/:id", input);
+export const findUserById = (input) => axios.get("/findUserById/:id", input);
 //
 export const createRoom = (input) => axios.post("/auth/createRoom", input);
 export const createChair = (input) => axios.post("/auth/createChair", input);
