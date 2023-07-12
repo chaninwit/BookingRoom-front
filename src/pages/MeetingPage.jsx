@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CardById from "../components/CardById";
 import Menu from "../layouts/Menu";
 import Header from "../layouts/Header";
+import { toast } from "react-toastify";
 
 export default function MeetingPage() {
   const [chairData, setChairData] = useState([]);
+  const [bookedChairData, setBookedChairData] = useState({});
   const [selectedChairs, setSelectedChairs] = useState([]);
+  const [submissionStatus, setSubmissionStatus] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
   let { id } = useParams();
 
   useEffect(() => {
@@ -15,19 +20,52 @@ export default function MeetingPage() {
       .get(`/auth/findAllChairById/${id}`)
       .then((response) => {
         setChairData(response.data);
-        console.log("response.data", response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+
+    axios
+      .get(`/auth/findBookingById/${id}`)
+      .then((response) => {
+        setBookedChairData(response.data?.Chair);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id, submissionStatus]);
 
   const handleChairClick = (chairId) => {
-    if (selectedChairs.includes(chairId)) {
-      setSelectedChairs(selectedChairs.filter((id) => id !== chairId));
-    } else {
-      setSelectedChairs([...selectedChairs, chairId]);
+    if (!isSubmitting) {
+      const isAlreadyBooked = bookedChairData?.ChairId?.includes(chairId);
+      if (!isAlreadyBooked && !selectedChairs.includes(chairId)) {
+        setSelectedChairs([...selectedChairs, chairId]);
+      } else {
+        setSelectedChairs(selectedChairs.filter((ss) => ss != chairId));
+      }
     }
+  };
+
+  const handleSubmit = () => {
+    const sortedChairs = selectedChairs.sort((a, b) => a - b);
+
+    axios
+      .put(`/auth/updateBooking`, {
+        id: id,
+        ChairId: { ChairId: [...sortedChairs, ...bookedChairData?.ChairId] },
+      })
+      .then((response) => {
+        console.log("Selected chairs updated successfully");
+        setSubmissionStatus(true); // Update submission status to trigger rerender
+      })
+      .catch((error) => {
+        console.error("Failed to update selected chairs:", error);
+      });
+
+    setIsSubmitting(true); // Set isSubmitting to true when submitting
+
+    toast.success("จองสำเร็จ");
+    navigate("/");
   };
 
   const renderChairs = () => {
@@ -40,10 +78,15 @@ export default function MeetingPage() {
         onClick={() => handleChairClick(item.id)}
       >
         <button
-          className={`rounded-sm border shadow-lg  w-10 p-2 ${
-            selectedChairs.includes(item.id) ? "bg-green-500" : "bg-blue-200"
+          className={`rounded-sm border shadow-lg w-10 p-2 ${
+            selectedChairs.includes(item.id)
+              ? "bg-green-500"
+              : bookedChairData?.ChairId?.includes(item.id)
+              ? "bg-red-500"
+              : "bg-blue-200"
           }`}
           key={item.id}
+          disabled={bookedChairData?.ChairId?.includes(item.id)}
         >
           {item.id}
         </button>
@@ -71,9 +114,9 @@ export default function MeetingPage() {
 
           <div className="flex justify-center m-5 gap-20">
             <div>
-              <NavLink to="">
-                <button className="btn bg-blue-500">ตกลง</button>
-              </NavLink>
+              <button className="btn bg-blue-500" onClick={handleSubmit}>
+                ตกลง
+              </button>
             </div>
             <div>
               <NavLink to="/">

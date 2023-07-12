@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setRemoveToken } from "../utils/localstorage";
 
 export default function Dropdown() {
   const [open, setOpen] = useState(false);
   const dropdownEl = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -16,7 +17,7 @@ export default function Dropdown() {
 
   const handleClickLogout = () => {
     setRemoveToken();
-    // console.log("handleClickLogout");
+    navigate("/Guest");
   };
 
   return (
@@ -40,13 +41,12 @@ export default function Dropdown() {
               <div className="font-semibold">การจองของฉัน</div>
             </div>
           </Link>
-          <Link to="/Guest">
-            <div className=" item-center gep-4 hover:bg-gray-100 p-2 rounded-lg">
-              <div className="font-semibold" onClick={handleClickLogout}>
-                ออกจากระบบ
-              </div>
+
+          <div className=" item-center gep-4 hover:bg-gray-100 p-2 rounded-lg">
+            <div className="font-semibold" onClick={handleClickLogout}>
+              ออกจากระบบ
             </div>
-          </Link>
+          </div>
         </div>
       )}
     </div>

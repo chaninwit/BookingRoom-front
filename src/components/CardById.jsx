@@ -36,7 +36,7 @@ export default function CardById() {
                 <p>รายละเอียด: {item.meetingData.details}</p>
                 <p>ห้องที่: {item.meetingData.roomNumber}</p>
                 <p>จำนวนที่นั่ง: {item.RoomData.number_seat}</p>
-                <p>คงเหลือ: {item.remainingSeats}</p>
+                {/* <p>คงเหลือ: {item.remainingSeats}</p> */}
                 <p>เวลา: {item.meetingData.time}</p>
                 <p>เริ่มวันที่: {item.meetingData.dateStart}</p>
                 <p>จบวันที่: {item.meetingData.dateEnd}</p>
