@@ -10,15 +10,7 @@ export default function Header() {
             <img className="w-24 h-20" src={BOOKING} />
           </Link>
         </div>
-        <div className="grip-2 ">
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-full "
-            />
-          </div>
-        </div>
+
         <div className="justify-self-end self-center">
           <Dropdown />
         </div>

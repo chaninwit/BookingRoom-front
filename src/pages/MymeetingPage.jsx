@@ -1,13 +1,13 @@
-import Card from "../components/Card";
 import Header from "../layouts/Header";
 import Menu from "../layouts/Menu";
 import ButtonModal from "../components/ButtonModal";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import validateMeeingForm from "../features/auth/validators/validate-inputForm";
 import { getAccessToken } from "../utils/localstorage";
+import MyCard from "../components/MyCard ";
 
 const initialInput = {
   name: "",
@@ -37,6 +37,8 @@ export default function MymeetingPage() {
       })
       .then((response) => {
         setMeetingData(response.data);
+        toast.success("สร้างMeetingสำเร็จ");
+        navigate("/");
         console.log("response.data", response.data);
       })
       .catch((error) => {
@@ -51,23 +53,20 @@ export default function MymeetingPage() {
       console.log("result", input);
       setError({});
       console.log(e);
-      toast.success("สร้างMeetingสำเร็จ");
     } catch (err) {
       toast.error(err.message);
     }
-    toast.success("สร้างสำเร็จ");
-    navigate("/");
   };
 
   return (
     <div className="min-h-screen ">
       <Header />
-      <div className="flex  justify-between">
+      <div className="flex  ">
         <Menu />
         <div className="flex ">
-          <Card />
+          <MyCard />
         </div>
-        <div className="m-10 w-20">
+        <div className="m-10 w-20  justify-self-auto">
           <ButtonModal title="  Create Meeting">
             <div>
               <form
@@ -76,66 +75,58 @@ export default function MymeetingPage() {
                 onSubmit={handleSubmitForm}
               >
                 <div className=" flex flex-row ">
-                  {/* left */}
-                  <div className=" mt-5 ">
-                    <div className="flex-1 m-10 item-center">
-                      <div className="card-body">
-                        <input
-                          name="name"
-                          type="text"
-                          placeholder="ชื่อ"
-                          onChange={handleChangeInput}
-                        />
-                        <input
-                          name="details"
-                          type="text"
-                          placeholder="รายละเอียด"
-                          onChange={handleChangeInput}
-                        />
-                        <input
-                          name="roomNumber"
-                          type="text"
-                          placeholder="ห้องที่"
-                          onChange={handleChangeInput}
-                        />
-                        <p>เวลา</p>
-                        <input
-                          name="time"
-                          type="time"
-                          placeholder="เวลาเริ่ม"
-                          onChange={handleChangeInput}
-                        />
+                  <div className="flex-1 m-10 item-center">
+                    <div className="card-body flex gap-5">
+                      <input
+                        name="name"
+                        type="text"
+                        placeholder="ชื่อ"
+                        onChange={handleChangeInput}
+                      />
+                      <input
+                        name="details"
+                        type="text"
+                        placeholder="รายละเอียด"
+                        onChange={handleChangeInput}
+                      />
+                      <select name="RoomId" onChange={handleChangeInput}>
+                        <option value="">เลือกห้องที่</option>
+                        <option value="1">ห้องที่ 1</option>
+                        <option value="2">ห้องที่ 2</option>
+                      </select>
 
-                        <p>เริ่มวันที่</p>
-                        <input
-                          name="dateStart"
-                          type="date"
-                          placeholder="เริ่ม"
-                          onChange={handleChangeInput}
-                        />
-                        <p>จบวันที่</p>
-                        <input
-                          name="dateEnd"
-                          type="date"
-                          placeholder="จบ"
-                          onChange={handleChangeInput}
-                        />
-                        <p>RoomId</p>
-                        <input
-                          name="RoomId"
-                          type="text"
-                          placeholder="RoomId"
-                          onChange={handleChangeInput}
-                        />
-                      </div>
-                      <div className=" flex  justify-center items-end gap-20">
-                        <button className="btn bg-blue-500 text-white">
-                          ตกลง
-                        </button>
-                      </div>
+                      <p>เวลา</p>
+                      <input
+                        name="time"
+                        type="time"
+                        placeholder="เวลาเริ่ม"
+                        onChange={handleChangeInput}
+                      />
+
+                      <p>เริ่มวันที่</p>
+                      <input
+                        name="dateStart"
+                        type="date"
+                        placeholder="เริ่ม"
+                        onChange={handleChangeInput}
+                      />
+                      <p>จบวันที่</p>
+                      <input
+                        name="dateEnd"
+                        type="date"
+                        placeholder="จบ"
+                        onChange={handleChangeInput}
+                      />
+                    </div>
+                    <div className=" flex  justify-center items-end gap-20">
+                      <button
+                        type="submit"
+                        className="btn bg-blue-500 text-white"
+                      >
+                        ตกลง
+                      </button>
                     </div>
                   </div>
-                  {/* rigth */}
                 </div>
               </form>
             </div>

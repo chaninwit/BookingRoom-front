@@ -4,20 +4,8 @@ import BOOKING from "../assets/BOOKING.png";
 import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
 import Card from "../components/Card";
-// import { useEffect, useState } from "react";
-// import { BACKEND_URL } from "../config/env";
 
 export default function HomePage() {
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get(`${BACKEND_URL}/auth/card`);
-  //     setData(response.data);
-  //   };
-
-  //   fetchData();
-  // }, []);
   return (
     <div className="min-h-screen ">
       <div className=" h-20">
@@ -46,7 +34,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="flex ">
         <div>
           <div className=" flex h-[calc(100vh-5rem)]">
             <div className="mt-20">
@@ -56,17 +44,12 @@ export default function HomePage() {
                     HOME
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="navlink" to="/Meeting">
-                    MEETING
-                  </NavLink>
-                </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="flex">
+        <div className="flex justify-center">
           <Card />
         </div>
       </div>

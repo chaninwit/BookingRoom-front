@@ -1,4 +1,4 @@
-export default function Modal({ title, children }) {
+export default function Modal({ title, children, Close }) {
   return (
     <>
       {/* The button to open modal */}
@@ -14,7 +14,7 @@ export default function Modal({ title, children }) {
           <div>{children}</div>
           <div className="modal-action">
             <label htmlFor="my_modal_6" className="btn">
-              ปิด
+              {Close}
             </label>
           </div>
         </div>

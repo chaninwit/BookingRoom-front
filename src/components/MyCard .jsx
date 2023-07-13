@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { getAccessToken } from "../utils/localstorage";
 
-export default function Card() {
+export default function MyCard() {
   const [cardData, setCardData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const token = getAccessToken();
     axios
-      .get("/auth/findCard")
+      .get("/auth/findMeetingById", {
+        headers: { authorization: token },
+      })
       .then((response) => {
         console.log("response", response.data);
         setCardData(response.data);
@@ -15,13 +22,30 @@ export default function Card() {
       })
       .catch((error) => {
         console.error(error);
-        setCardData([]); // กำหนดค่า cardData เป็นแอร์เรย์ว่างเมื่อไม่พบข้อมูล
       });
   }, []);
 
+  const handleOnDelete = (meetingId) => {
+    const token = getAccessToken();
+    console.log("meetingId", meetingId);
+    axios
+      .delete(`/auth/deleteMeeting/${meetingId}`, {
+        headers: { authorization: token },
+      })
+      .then(() => {
+        console.log("Meeting deleted successfully");
+        toast.success("ลบสำเร็จ");
+        navigate("/");
+      })
+
+      .catch((error) => {
+        console.error("error", error);
+      });
+  };
+
   return (
     <div className=" mt-10 flex w-1/2 h-1/2">
-      {cardData.length ? (
+      {cardData.length &&
         cardData.map((item) => (
           <div className="flex-1 m-10 item-center" key={item.id}>
             <div className=" bg-base-100 shadow-xl">
@@ -44,16 +68,17 @@ export default function Card() {
                   <Link to={`/Booking/${item.meetingData.id}`}>
                     <button className="btn btn-primary">เข้าร่วมเลย</button>
                   </Link>
+                  <button
+                    className="btn bg-red-500 text-white"
+                    onClick={() => handleOnDelete(item.meetingData.id)}
+                  >
+                    ลบ
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        ))
-      ) : (
-        <p className="flex justify-center items-center border bg-red-500 p-64 mt-10 ml-64">
-          No data
-        </p> // แสดงข้อความ "No data" เมื่อไม่พบข้อมูล
-      )}
+        ))}
     </div>
   );
 }

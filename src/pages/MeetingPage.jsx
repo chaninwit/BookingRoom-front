@@ -15,24 +15,25 @@ export default function MeetingPage() {
   const navigate = useNavigate();
   let { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get(`/auth/findAllChairById/${id}`)
-      .then((response) => {
-        setChairData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const findRoomId = async () => {
+    try {
+      let A = await axios.get(`/auth/findBookingById/${id}`);
+      setBookedChairData(A.data?.Chair);
+      const MeetingId = A.data.bookingID.MeetingId;
+      console.log("A", A);
 
-    axios
-      .get(`/auth/findBookingById/${id}`)
-      .then((response) => {
-        setBookedChairData(response.data?.Chair);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      let B = await axios.get(`/auth/findMeetingByMeeting/${MeetingId}`);
+      const RoomData = B.data.RoomId;
+      console.log("B", B);
+      let C = await axios.get(`/auth/findAllChairById/${RoomData}`);
+      setChairData(C.data);
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
+
+  useEffect(() => {
+    findRoomId();
   }, [id, submissionStatus]);
 
   const handleChairClick = (chairId) => {
