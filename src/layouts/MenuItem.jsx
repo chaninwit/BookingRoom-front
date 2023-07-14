@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 export default function MenuItem() {
   return (
-    <ul className="menu p-5 w-80 h-full bg-base-300 text-base-content items-center gap-8 ">
+    <ul className="menu p-5 w-80 h-full bg-base-300 text-base-content items-center gap-8  mr-10">
       <li>
         <a>
-          <NavLink className="navlink" to="/">
+          <NavLink className="navlink font-bold" to="/">
             HOME
           </NavLink>
         </a>
@@ -13,7 +13,7 @@ export default function MenuItem() {
 
       <li>
         <a>
-          <NavLink className="navlink" to="/Mymeeting">
+          <NavLink className="navlink font-bold" to="/Mymeeting">
             MY MEETING
           </NavLink>
         </a>

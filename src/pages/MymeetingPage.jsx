@@ -37,7 +37,7 @@ export default function MymeetingPage() {
       })
       .then((response) => {
         setMeetingData(response.data);
-        toast.success("สร้างMeetingสำเร็จ");
+        toast.success("สร้างสำเร็จ");
         navigate("/");
         console.log("response.data", response.data);
       })

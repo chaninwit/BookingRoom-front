@@ -20,11 +20,16 @@ export default function Card() {
   }, []);
 
   return (
-    <div className=" mt-10 flex w-1/2 h-1/2">
+    <div className=" mt-20 container  flex gap-6 ">
       {cardData.length ? (
         cardData.map((item) => (
-          <div className="flex-1 m-10 item-center" key={item.id}>
-            <div className=" bg-base-100 shadow-xl">
+          <div
+            className={`${
+              cardData.length === 1 ? "w-[300px] " : "item-center w-[300px]"
+            }`}
+            key={item.id}
+          >
+            <div className=" bg-base-100 shadow-xl ">
               <figure>
                 <img src={item.RoomData.image} alt="Room" />
               </figure>
@@ -50,7 +55,7 @@ export default function Card() {
           </div>
         ))
       ) : (
-        <p className="flex justify-center items-center border bg-red-500 p-64 mt-10 ml-64">
+        <p className="flex justify-center items-center border bg-red-100 p-64 mt-10 ml-64">
           No data
         </p> // แสดงข้อความ "No data" เมื่อไม่พบข้อมูล
       )}

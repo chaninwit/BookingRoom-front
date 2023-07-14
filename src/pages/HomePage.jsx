@@ -16,13 +16,13 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grip-2 ">
-            <div className="form-control">
+            {/* <div className="form-control">
               <input
                 type="text"
                 placeholder="Search"
                 className="input input-bordered w-full "
               />
-            </div>
+            </div> */}
           </div>
           <div className="justify-self-end self-center">
             <div>
@@ -38,9 +38,9 @@ export default function HomePage() {
         <div>
           <div className=" flex h-[calc(100vh-5rem)]">
             <div className="mt-20">
-              <ul className="menu p-5 w-80 h-full bg-base-300 text-base-content items-center gap-8 ">
+              <ul className="menu p-5 w-80 h-full bg-base-300 text-base-content items-center gap-8  mr-10 ">
                 <li>
-                  <NavLink className="navlink" to="/">
+                  <NavLink className="navlink font-bold" to="/">
                     HOME
                   </NavLink>
                 </li>

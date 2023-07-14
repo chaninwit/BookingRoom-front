@@ -44,10 +44,15 @@ export default function MyCard() {
   };
 
   return (
-    <div className=" mt-10 flex w-1/2 h-1/2">
+    <div className=" mt-20 container  flex gap-6">
       {cardData.length &&
         cardData.map((item) => (
-          <div className="flex-1 m-10 item-center" key={item.id}>
+          <div
+            className={`${
+              cardData.length === 1 ? "w-[300px] " : "item-center w-[300px]"
+            }`}
+            key={item.id}
+          >
             <div className=" bg-base-100 shadow-xl">
               <figure>
                 <img src={item.RoomData.image} alt="Room" />
